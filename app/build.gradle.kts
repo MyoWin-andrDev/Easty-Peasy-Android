@@ -2,18 +2,19 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
+    id("com.google.dagger.hilt.android")
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.0.21" // Match Kotlin version
+
 }
-val hilt_version = "2.46.1"
 
 android {
     namespace = "com.myowin.eastypeasy"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.myowin.eastypeasy"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -49,13 +50,39 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.kotlinx.serialization.json)
 
     // Hilt core
-    implementation("com.google.dagger:hilt-android:$hilt_version")
-    kapt("com.google.dagger:hilt-compiler:$hilt_version")
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
-    // Optional: For ViewModel injection
-    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0")
-    kapt("androidx.hilt:hilt-compiler:1.0.0")
+    // Hilt ViewModel
+    implementation(libs.androidx.hilt.navigation.fragment)
+    kapt(libs.androidx.hilt.compiler)
+
+    //viewbinding
+    implementation(libs.android.viewbinding)
+
+    //ktor
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)  // Add this line
+    implementation(libs.ktor.client.logging)
+
+    // Kotlinx Serialization
+    implementation(libs.kotlinx.serialization.json)
+
+    //datastore
+    implementation(libs.datastore.preferences)
+    implementation(libs.datastore.core)
+
+    //timber
+    implementation(libs.timber)
+
+    //custom crash
+    implementation(libs.customactivityoncrash)
+
+
 
 }
