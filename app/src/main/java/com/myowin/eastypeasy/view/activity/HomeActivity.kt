@@ -2,6 +2,7 @@ package com.myowin.eastypeasy.view.activity
 
 import android.os.Bundle
 import android.viewbinding.library.activity.viewBinding
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.myowin.eastypeasy.databinding.ActivityHomeBinding
@@ -15,6 +16,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(binding.root)
 
         binding.tvMain.setText("adjsfklajsdlfjksdjf")
