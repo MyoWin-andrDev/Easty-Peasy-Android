@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Primary -->
+    <color name="colorPrimary">#FFAB40</color>
+    <color name="onPrimary">#FFFFFF</color>
+    <color name="colorPrimaryContainer">#FFE5C4</color>
+
+    <!-- Secondary -->
+    <color name="colorSecondary">#FF8A65</color>
+    <color name="colorSecondaryContainer">#FFE0B2</color>
+
+    <!-- Additional Colors -->
+    <color name="colorGold">#FFC107</color>
+    <color name="colorLink">#1443C3</color>
+
+    <!-- Alert -->
+    <color name="colorError">#EF5350</color>
+    <color name="onError">#FFFFFF</color>
+    <color name="colorSuccess">#4CAF50</color>
+    <color name="onSuccess">#FFFFFF</color>
+    <color name="colorOnGoing">#00796B</color>
+
+    <!-- Background -->
+    <color name="background">#FFF8F0</color>
+    <color name="onBackground">#000000</color>
+
+    <!-- Surface -->
+    <color name="surface">#FFFFFF</color>
+    <color name="onSurface">#000000</color>
+
+    <!-- Border -->
+    <color name="borderPrimary">#FFCB87</color>
+    <color name="divider">#F5F5F5</color>
+    <color name="border">#E0E0E0</color>
+    <color name="inputBorder">#CBD2E0</color>
+
+    <!-- Text -->
+    <color name="textPrimary">#000000</color>
+    <color name="textInactive">#999999</color>
+    <color name="textGreyLight">#7C7676</color>
+    <color name="textGreyDark">#4D4D4D</color>
 </resources>
