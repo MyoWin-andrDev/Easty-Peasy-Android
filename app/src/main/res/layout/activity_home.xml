@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:scaleType="fitCenter"/>
+            android:scaleType="fitXY"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,14 +57,14 @@
                     android:layout_height="wrap_content"
                     style="@style/TextAppearance.Paragraph.Medium"
                     android:text="Deliver To"
-                    android:textColor="@color/white"
+                    android:textColor="@color/surface"
                     android:layout_marginBottom="10dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/TextAppearance.Paragraph.Large.Medium"
-                    android:textColor="@color/white"
+                    android:textColor="@color/surface"
                     android:text="Jomtiem, Pattaya"/>
 
             </LinearLayout>
