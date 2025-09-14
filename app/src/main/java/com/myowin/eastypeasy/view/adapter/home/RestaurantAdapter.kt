@@ -30,7 +30,7 @@ class RestaurantAdapter (val restaurantList : List<RestaurantModel>) : RecyclerV
             tvRestaurantName.text = restaurant.restaurantName
             tvSpecialty.text = restaurant.specialty
             tvRating.text = restaurant.rating.toString()
-            tvDuration.text = restaurant.distance.toString()
+            tvDuration.text = "${restaurant.distance} mins"
         }
     }
 }
