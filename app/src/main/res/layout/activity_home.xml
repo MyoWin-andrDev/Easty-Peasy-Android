@@ -11,70 +11,70 @@
         android:id="@+id/clImage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="150dp"
+            android:layout_height="144dp"
             android:contentDescription="TODO"
+            android:scaleType="fitXY"
             android:src="@drawable/bg_home"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:scaleType="fitXY"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:padding="10dp"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:gravity="center_vertical"
             android:layout_marginBottom="16dp"
-            android:orientation="horizontal">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@drawable/ic_location"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/bg_icon"
-                android:layout_marginEnd="10dp"/>
+                android:src="@drawable/ic_location" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_gravity="center_vertical"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/TextAppearance.Paragraph.Medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/TextAppearance.Paragraph.Medium"
+                    android:layout_marginBottom="10dp"
                     android:text="Deliver To"
-                    android:textColor="@color/surface"
-                    android:layout_marginBottom="10dp"/>
+                    android:textColor="@color/surface" />
 
                 <TextView
+                    style="@style/TextAppearance.Paragraph.Large.Medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/TextAppearance.Paragraph.Large.Medium"
-                    android:textColor="@color/surface"
-                    android:text="Jomtiem, Pattaya"/>
+                    android:text="Jomtiem, Pattaya"
+                    android:textColor="@color/surface" />
+
 
             </LinearLayout>
 
             <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@drawable/ic_location"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:background="@drawable/bg_icon"
-                android:layout_marginEnd="10dp"/>
+                android:src="@drawable/ic_cart" />
 
         </LinearLayout>
 
@@ -84,23 +84,26 @@
         android:id="@+id/llSearchBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/bg_search_bar_home"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/clImage"
-        android:background="#FFE0B2"
-        android:orientation="vertical">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clImage">
 
 
-        <com.google.android.material.search.SearchBar
+        <include
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            layout="@layout/main_search_bar" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCuisine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="1"
-            tools:listitem="@layout/home_cuisine_list"/>
+            android:orientation="horizontal"
+            tools:listitem="@layout/list_item_cuisine"
+            android:layout_marginBottom="16dp"/>
 
     </LinearLayout>
 
@@ -115,34 +118,37 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
             android:orientation="horizontal"
+            android:paddingStart="24dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="@dimen/dp_24"
+            android:paddingBottom="8dp"
             tools:ignore="MissingConstraints">
 
             <TextView
+                style="@style/TextAppearance.Heading.Normal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                style="@style/TextAppearance.Heading.Normal"
                 android:text="Restaurant Near You" />
 
             <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_location"/>
+                android:src="@drawable/ic_next"/>
 
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRestaurantNearYou"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints"
             tools:itemCount="5"
-            tools:listitem="@layout/home_restaurant_list"
-            tools:ignore="MissingConstraints" />
+            tools:listitem="@layout/list_item_restaurant" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -158,43 +164,55 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
             android:orientation="horizontal"
+            android:paddingStart="24dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="16dp"
             tools:ignore="MissingConstraints">
 
             <TextView
+                style="@style/TextAppearance.Heading.Normal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                style="@style/TextAppearance.Heading.Normal"
                 android:text="Popular Restaurant" />
 
             <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_location"/>
+                android:src="@drawable/ic_next" />
 
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPopularRestaurant"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints"
             tools:itemCount="5"
-            tools:listitem="@layout/home_restaurant_list"
-            tools:ignore="MissingConstraints" />
+            tools:listitem="@layout/list_item_restaurant" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="match_parent"
+        android:id="@+id/bottom_navigation"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/bg_bn"
+        app:itemBackground="@android:color/transparent"
+        app:itemIconTint="@drawable/bg_bn_item"
+        app:itemRippleColor="@android:color/transparent"
+
+        app:itemTextColor="@drawable/bg_bn_item"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

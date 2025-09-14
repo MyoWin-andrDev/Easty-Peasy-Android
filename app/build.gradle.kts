@@ -83,6 +83,12 @@ dependencies {
     //custom crash
     implementation(libs.customactivityoncrash)
 
+    //Material Component
+    implementation(libs.material.v160)
+
+    //Glide
+    implementation(libs.glide)
+
 
 
 }

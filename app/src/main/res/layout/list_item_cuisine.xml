@@ -5,19 +5,21 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:id="@+id/ivCuisine"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:contentDescription="cuisine"
         android:src="@drawable/american_breakfast"
-        android:padding="8dp"
-        android:layout_marginBottom="16dp"/>
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="8dp"/>
 
     <TextView
+        android:id="@+id/tvName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="Coffee"
-        android:textSize="20sp"/>
+        style="@style/TextAppearance.Paragraph.Medium"/>
 
 
 </LinearLayout>

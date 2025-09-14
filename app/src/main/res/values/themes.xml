@@ -1,128 +1,129 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.EastyPeasy" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.EastyPeasy" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorOnPrimary">@color/onPrimary</item>
         <item name="colorPrimaryContainer">@color/colorPrimaryContainer</item>
         <item name="colorSecondary">@color/colorSecondary</item>
         <item name="colorSecondaryContainer">@color/colorSecondaryContainer</item>
-        <item name="colorGold">@color/colorGold</item>
-        <item name="colorLink">@color/colorLink</item>
-        <item name="colorError">@color/colorError</item>
-        <item name="onError">@color/onError</item>
-        <item name="colorSuccess">@color/colorSuccess</item>
-        <item name="onSuccess">@color/onSuccess</item>
-        <item name="colorOnGoing">@color/colorOnGoing</item>
-        <item name="background">@color/background</item>
-        <item name="onBackground">@color/onBackground</item>
-        <item name="surface">@color/surface</item>
-        <item name="onSurface">@color/onSurface</item>
-        <item name="borderPrimary">@color/borderPrimary</item>
-        <item name="divider">@color/divider</item>
-        <item name="border">@color/border</item>
-        <item name="inputBorder">@color/inputBorder</item>
-        <item name="textPrimary">@color/textPrimary</item>
-        <item name="textInactive">@color/textInactive</item>
-        <item name="textGreyLight">@color/textGreyLight</item>
-        <item name="textGreyDark">@color/textGreyDark</item>
+        <item name="colorControlHighlight">@android:color/transparent</item>
+<!--        <item name="colorGold">@color/colorGold</item>-->
+<!--        <item name="colorLink">@color/colorLink</item>-->
+<!--        <item name="colorError">@color/colorError</item>-->
+<!--        <item name="onError">@color/onError</item>-->
+<!--        <item name="colorSuccess">@color/colorSuccess</item>-->
+<!--        <item name="onSuccess">@color/onSuccess</item>-->
+<!--        <item name="colorOnGoing">@color/colorOnGoing</item>-->
+<!--        <item name="background">@color/background</item>-->
+<!--        <item name="onBackground">@color/onBackground</item>-->
+<!--        <item name="surface">@color/surface</item>-->
+<!--        <item name="onSurface">@color/onSurface</item>-->
+<!--        <item name="borderPrimary">@color/borderPrimary</item>-->
+<!--        <item name="divider">@color/divider</item>-->
+<!--        <item name="border">@color/border</item>-->
+<!--        <item name="inputBorder">@color/inputBorder</item>-->
+<!--        <item name="textPrimary">@color/textPrimary</item>-->
+<!--        <item name="textInactive">@color/textInactive</item>-->
+<!--        <item name="textGreyLight">@color/textGreyLight</item>-->
+<!--        <item name="textGreyDark">@color/textGreyDark</item>-->
     </style>
 
-    <style name="Theme.EastyPeasy" parent="Base.Theme.EastyPeasy" />
+<!--    <style name="Theme.EastyPeasy" parent="Base.Theme.EastyPeasy" />-->
 
-    <!-- ===== HEADING STYLES (Nunito) ===== -->
-    <style name="TextAppearance.Heading.Large">
-        <item name="android:fontFamily">@font/nunito_semibold</item>
-        <item name="android:textSize">32sp</item>
-        <item name="android:autoSizeTextType">uniform</item>
-        <item name="android:textStyle">normal</item>
-    </style>
+<!--    &lt;!&ndash; ===== HEADING STYLES (Nunito) ===== &ndash;&gt;-->
+<!--    <style name="TextAppearance.Heading.Large">-->
+<!--        <item name="android:fontFamily">@font/nunito_semibold</item>-->
+<!--        <item name="android:textSize">32sp</item>-->
+<!--        <item name="android:autoSizeTextType">uniform</item>-->
+<!--        <item name="android:textStyle">normal</item>-->
+<!--    </style>-->
 
-    <style name="TextAppearance.Heading.Normal">
-        <item name="android:fontFamily">@font/nunito_medium</item>
-        <item name="android:textSize">28sp</item>
-        <item name="android:autoSizeTextType">uniform</item>
-        <item name="android:textStyle">normal</item>
-    </style>
+<!--    <style name="TextAppearance.Heading.Normal">-->
+<!--        <item name="android:fontFamily">@font/nunito_medium</item>-->
+<!--        <item name="android:textSize">28sp</item>-->
+<!--        <item name="android:autoSizeTextType">uniform</item>-->
+<!--        <item name="android:textStyle">normal</item>-->
+<!--    </style>-->
 
-    <style name="TextAppearance.Heading.Small">
-        <item name="android:fontFamily">@font/nunito_semibold</item>
-        <item name="android:textSize">22sp</item>
-        <item name="android:textStyle">normal</item>
-    </style>
+<!--    <style name="TextAppearance.Heading.Small">-->
+<!--        <item name="android:fontFamily">@font/nunito_semibold</item>-->
+<!--        <item name="android:textSize">22sp</item>-->
+<!--        <item name="android:textStyle">normal</item>-->
+<!--    </style>-->
 
-    <!-- ===== PARAGRAPH STYLES (Lato) ===== -->
-    <style name="TextAppearance.Paragraph.Medium">
-        <item name="android:fontFamily">@font/lato_regular</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:autoSizeTextType">uniform</item>
-        <item name="android:textStyle">normal</item>
-    </style>
+<!--    &lt;!&ndash; ===== PARAGRAPH STYLES (Lato) ===== &ndash;&gt;-->
+<!--    <style name="TextAppearance.Paragraph.Medium">-->
+<!--        <item name="android:fontFamily">@font/lato_regular</item>-->
+<!--        <item name="android:textSize">20sp</item>-->
+<!--        <item name="android:autoSizeTextType">uniform</item>-->
+<!--        <item name="android:textStyle">normal</item>-->
+<!--    </style>-->
 
-    <style name="TextAppearance.Paragraph.Small">
-        <item name="android:fontFamily">@font/lato_regular</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:autoSizeTextType">uniform</item>
-        <item name="android:textStyle">normal</item>
-    </style>
+<!--    <style name="TextAppearance.Paragraph.Small">-->
+<!--        <item name="android:fontFamily">@font/lato_regular</item>-->
+<!--        <item name="android:textSize">16sp</item>-->
+<!--        <item name="android:autoSizeTextType">uniform</item>-->
+<!--        <item name="android:textStyle">normal</item>-->
+<!--    </style>-->
 
-    <style name="TextAppearance.Paragraph.Tiny">
-        <item name="android:fontFamily">@font/lato_regular</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:autoSizeTextType">uniform</item>
-        <item name="android:textStyle">normal</item>
-    </style>
+<!--    <style name="TextAppearance.Paragraph.Tiny">-->
+<!--        <item name="android:fontFamily">@font/lato_regular</item>-->
+<!--        <item name="android:textSize">14sp</item>-->
+<!--        <item name="android:autoSizeTextType">uniform</item>-->
+<!--        <item name="android:textStyle">normal</item>-->
+<!--    </style>-->
 
-    <!-- ===== LARGE TEXT STYLES (Mixed) ===== -->
-    <style name="TextAppearance.Paragraph.Large.Medium">
-        <item name="android:fontFamily">@font/lato_regular</item>
-        <item name="android:textSize">22sp</item>
-        <item name="android:autoSizeTextType">uniform</item>
-        <item name="android:textStyle">normal</item>
-    </style>
+<!--    &lt;!&ndash; ===== LARGE TEXT STYLES (Mixed) ===== &ndash;&gt;-->
+<!--    <style name="TextAppearance.Paragraph.Large.Medium">-->
+<!--        <item name="android:fontFamily">@font/lato_regular</item>-->
+<!--        <item name="android:textSize">22sp</item>-->
+<!--        <item name="android:autoSizeTextType">uniform</item>-->
+<!--        <item name="android:textStyle">normal</item>-->
+<!--    </style>-->
 
-    <style name="TextAppearance.Paragraph.Large.Regular">
-        <item name="android:fontFamily">@font/lato_regular</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:autoSizeTextType">uniform</item>
-        <item name="android:textStyle">normal</item>
-    </style>
+<!--    <style name="TextAppearance.Paragraph.Large.Regular">-->
+<!--        <item name="android:fontFamily">@font/lato_regular</item>-->
+<!--        <item name="android:textSize">20sp</item>-->
+<!--        <item name="android:autoSizeTextType">uniform</item>-->
+<!--        <item name="android:textStyle">normal</item>-->
+<!--    </style>-->
 
-    <!-- ===== Button Text STYLES (Lato) ===== -->
-    <style name="TextAppearance.Button.Label">
-        <item name="android:fontFamily">@font/lato_bold</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:autoSizeTextType">uniform</item>
-        <item name="android:textStyle">normal</item>
-    </style>
+<!--    &lt;!&ndash; ===== Button Text STYLES (Lato) ===== &ndash;&gt;-->
+<!--    <style name="TextAppearance.Button.Label">-->
+<!--        <item name="android:fontFamily">@font/lato_bold</item>-->
+<!--        <item name="android:textSize">20sp</item>-->
+<!--        <item name="android:autoSizeTextType">uniform</item>-->
+<!--        <item name="android:textStyle">normal</item>-->
+<!--    </style>-->
 
-    <style name="TextAppearance.Button.Price">
-        <item name="android:fontFamily">@font/lato_medium</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:autoSizeTextType">uniform</item>
-        <item name="android:textStyle">normal</item>
-    </style>
+<!--    <style name="TextAppearance.Button.Price">-->
+<!--        <item name="android:fontFamily">@font/lato_medium</item>-->
+<!--        <item name="android:textSize">16sp</item>-->
+<!--        <item name="android:autoSizeTextType">uniform</item>-->
+<!--        <item name="android:textStyle">normal</item>-->
+<!--    </style>-->
 
-    <!-- ===== Tab Text STYLES (Lato) ===== -->
-    <style name="TextAppearance.Tab.Active">
-        <item name="android:fontFamily">@font/lato_semibold</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:autoSizeTextType">uniform</item>
-        <item name="android:textStyle">normal</item>
-    </style>
+<!--    &lt;!&ndash; ===== Tab Text STYLES (Lato) ===== &ndash;&gt;-->
+<!--    <style name="TextAppearance.Tab.Active">-->
+<!--        <item name="android:fontFamily">@font/lato_semibold</item>-->
+<!--        <item name="android:textSize">20sp</item>-->
+<!--        <item name="android:autoSizeTextType">uniform</item>-->
+<!--        <item name="android:textStyle">normal</item>-->
+<!--    </style>-->
 
-    <style name="TextAppearance.Tab.Inactive">
-        <item name="android:fontFamily">@font/lato_semibold</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:autoSizeTextType">uniform</item>
-        <item name="android:textStyle">normal</item>
-    </style>
+<!--    <style name="TextAppearance.Tab.Inactive">-->
+<!--        <item name="android:fontFamily">@font/lato_semibold</item>-->
+<!--        <item name="android:textSize">20sp</item>-->
+<!--        <item name="android:autoSizeTextType">uniform</item>-->
+<!--        <item name="android:textStyle">normal</item>-->
+<!--    </style>-->
 
-    <!-- ===== Tag Text STYLES (Nunito) ===== -->
-    <style name="TextAppearance.Tab.Active">
-        <item name="android:fontFamily">@font/nunito_regular</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:autoSizeTextType">uniform</item>
-        <item name="android:textStyle">normal</item>
-    </style>
+<!--    &lt;!&ndash; ===== Tag Text STYLES (Nunito) ===== &ndash;&gt;-->
+<!--    <style name="TextAppearance.Tag.Active">-->
+<!--        <item name="android:fontFamily">@font/nunito_regular</item>-->
+<!--        <item name="android:textSize">16sp</item>-->
+<!--        <item name="android:autoSizeTextType">uniform</item>-->
+<!--        <item name="android:textStyle">normal</item>-->
+<!--    </style>-->
 </resources>
