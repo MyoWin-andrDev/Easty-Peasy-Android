@@ -46,14 +46,14 @@
     <!-- ===== HEADING STYLES (Nunito) ===== -->
     <style name="TextAppearance.Heading.Large">
         <item name="android:fontFamily">@font/nunito_semibold</item>
-        <item name="android:textSize">32sp</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:autoSizeTextType">uniform</item>
         <item name="android:textStyle">normal</item>
     </style>
 
     <style name="TextAppearance.Heading.Normal">
         <item name="android:fontFamily">@font/nunito_medium</item>
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textStyle">normal</item>
     </style>
 
@@ -81,21 +81,20 @@
     <style name="TextAppearance.Paragraph.Tiny">
         <item name="android:fontFamily">@font/lato_regular</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:autoSizeTextType">uniform</item>
         <item name="android:textStyle">normal</item>
     </style>
 
     <!-- ===== LARGE TEXT STYLES (Mixed) ===== -->
     <style name="TextAppearance.Paragraph.Large.Medium">
-        <item name="android:fontFamily">@font/lato_regular</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/lato_medium</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:autoSizeTextType">uniform</item>
         <item name="android:textStyle">normal</item>
     </style>
 
     <style name="TextAppearance.Paragraph.Large.Regular">
         <item name="android:fontFamily">@font/lato_regular</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:autoSizeTextType">uniform</item>
         <item name="android:textStyle">normal</item>
     </style>
@@ -110,7 +109,7 @@
 
     <style name="TextAppearance.Button.Price">
         <item name="android:fontFamily">@font/lato_medium</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:autoSizeTextType">uniform</item>
         <item name="android:textStyle">normal</item>
     </style>
@@ -118,14 +117,14 @@
     <!-- ===== Tab Text STYLES (Lato) ===== -->
     <style name="TextAppearance.Tab.Active">
         <item name="android:fontFamily">@font/lato_semibold</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:autoSizeTextType">uniform</item>
         <item name="android:textStyle">normal</item>
     </style>
 
     <style name="TextAppearance.Tab.Inactive">
         <item name="android:fontFamily">@font/lato_semibold</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:autoSizeTextType">uniform</item>
         <item name="android:textStyle">normal</item>
     </style>

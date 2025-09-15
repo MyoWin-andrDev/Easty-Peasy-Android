@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.myowin.eastypeasy.databinding.ListItemRestaurantBinding
-import com.myowin.eastypeasy.model.uimodel.home.RestaurantModel
+import com.myowin.eastypeasy.model.dto.RestaurantModel
 import com.myowin.eastypeasy.util.loadImageFromResource
 
 class RestaurantAdapter (val restaurantList : List<RestaurantModel>) : RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder>() {

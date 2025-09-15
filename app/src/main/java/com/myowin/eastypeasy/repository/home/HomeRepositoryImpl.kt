@@ -3,6 +3,7 @@ package com.myowin.eastypeasy.repository.home
 import com.myowin.eastypeasy.data.local.DataStoreManager
 import com.myowin.eastypeasy.data.network.safeApiCall
 import com.myowin.eastypeasy.model.dto.RestaurantModel
+import com.myowin.eastypeasy.util.Constant
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -26,7 +27,7 @@ class HomeRepositoryImpl @Inject constructor(
 
    override suspend fun fetchRestaurants(): Result<List<RestaurantModel>> {
         return safeApiCall {
-            client.get("https://example.com/restaurants").body<List<RestaurantModel>>()
+            client.get(Constant.BASE_URL_RESTAURANT).body<List<RestaurantModel>>()
         }
     }
 

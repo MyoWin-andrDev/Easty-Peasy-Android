@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="Coffee"
+        android:textColor="@color/textDark"
         style="@style/TextAppearance.Paragraph.Medium"/>
 
 

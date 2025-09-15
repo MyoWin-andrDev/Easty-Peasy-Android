@@ -7,6 +7,6 @@ data class RestaurantModel(
     val status: Boolean = true,                 // Open / Closed
     val rating: Float = 0.0f,                  // 4.9
     val address: String = "",                // Address
-    val specialty: String,              // Seafood - Curry - Cocktails
+    val specialty: String = "",              // Seafood - Curry - Cocktails
     val distance: Float = 0.0f      // Location or distance information
 )

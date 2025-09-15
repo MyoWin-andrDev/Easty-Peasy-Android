@@ -8,25 +8,6 @@
         <item name="colorSecondary">@color/colorSecondary</item>
         <item name="colorSecondaryContainer">@color/colorSecondaryContainer</item>
         <item name="colorControlHighlight">@android:color/transparent</item>
-<!--        <item name="colorGold">@color/colorGold</item>-->
-<!--        <item name="colorLink">@color/colorLink</item>-->
-<!--        <item name="colorError">@color/colorError</item>-->
-<!--        <item name="onError">@color/onError</item>-->
-<!--        <item name="colorSuccess">@color/colorSuccess</item>-->
-<!--        <item name="onSuccess">@color/onSuccess</item>-->
-<!--        <item name="colorOnGoing">@color/colorOnGoing</item>-->
-<!--        <item name="background">@color/background</item>-->
-<!--        <item name="onBackground">@color/onBackground</item>-->
-<!--        <item name="surface">@color/surface</item>-->
-<!--        <item name="onSurface">@color/onSurface</item>-->
-<!--        <item name="borderPrimary">@color/borderPrimary</item>-->
-<!--        <item name="divider">@color/divider</item>-->
-<!--        <item name="border">@color/border</item>-->
-<!--        <item name="inputBorder">@color/inputBorder</item>-->
-<!--        <item name="textPrimary">@color/textPrimary</item>-->
-<!--        <item name="textInactive">@color/textInactive</item>-->
-<!--        <item name="textGreyLight">@color/textGreyLight</item>-->
-<!--        <item name="textGreyDark">@color/textGreyDark</item>-->
     </style>
 
 <!--    <style name="Theme.EastyPeasy" parent="Base.Theme.EastyPeasy" />-->

@@ -32,11 +32,16 @@
     <color name="borderPrimary">#FFCB87</color>
     <color name="divider">#F5F5F5</color>
     <color name="border">#E0E0E0</color>
-    <color name="inputBorder">#CBD2E0</color>
+
+    <!-- Icon -->
+    <color name="inactiveIcon">#CBD2E0</color>
 
     <!-- Text -->
-    <color name="textPrimary">#000000</color>
-    <color name="textInactive">#999999</color>
+    <color name="textBlack">#000000</color>
+    <color name="textDark">#222227</color>
+    <color name="textDarker">#1E1E1E</color>
+    <color name="textInactive">#898D8F</color>
     <color name="textGreyLight">#7C7676</color>
     <color name="textGreyDark">#4D4D4D</color>
+    <color name="textPlaceHolder">#898D8F</color>
 </resources>

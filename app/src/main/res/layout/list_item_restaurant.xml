@@ -62,6 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/TextAppearance.Heading.Small"
+            android:textColor="@color/textDarker"
             android:text="The Collective Pattaya"
             android:layout_marginBottom="@dimen/dp_8"/>
 
@@ -70,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/TextAppearance.Paragraph.Tiny"
-            android:textColor="#7C7676"
+            android:textColor="@color/textGreyLight"
             android:text="Seafood - Curry - Cocktails"
             android:layout_marginBottom="@dimen/dp_8"/>
 
@@ -99,6 +100,7 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="@dimen/dp_5"
                     android:text="Free Delivery"
+                    android:textColor="@color/textDark"
                     style="@style/TextAppearance.Paragraph.Small"/>
 
             </LinearLayout>
@@ -122,6 +124,7 @@
                     android:layout_marginStart="@dimen/dp_5"
                     android:layout_gravity="center_vertical"
                     android:text="20 mins"
+                    android:textColor="@color/textDark"
                     style="@style/TextAppearance.Paragraph.Small"/>
 
             </LinearLayout>
