@@ -7,4 +7,150 @@
     android:layout_height="match_parent"
     tools:context=".view.activity.RestaurantDetailActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clRestoImage"
+        android:layout_width="match_parent"
+        android:layout_height="275dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/restaurant_bg">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/dp_24"
+            android:paddingTop="@dimen/dp_16"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="@dimen/dp_8"
+                android:background="@drawable/bg_icon"
+                android:src="@drawable/ic_previous"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivCart"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_icon"
+                android:src="@drawable/ic_cart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/restoDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clRestoImage"
+        android:layout_marginHorizontal="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_8">
+
+        <TextView
+            android:id="@+id/tvRestoName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/TextAppearance.Heading"
+            android:textAlignment="textStart"
+            android:text="The Collective Pattaya"
+            android:layout_marginBottom="@dimen/dp_5"/>
+
+        <TextView
+            android:id="@+id/tvRestaurantAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvRestoName"
+            style="@style/TextAppearance.Paragraph.Large.Regular"
+            android:textAlignment="textStart"
+            android:text="463/68 Beachfront"
+            android:layout_marginBottom="@dimen/dp_5"/>
+
+        <TextView
+            android:id="@+id/tvDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:layout_marginBottom="@dimen/dp_5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvRestaurantAddress"
+            style="@style/TextAppearance.Paragraph.Large.Regular"
+            android:text="30 - 40 mins"/>
+
+        <ImageView
+            android:id="@+id/ivStar"
+            android:layout_width="@dimen/dp_16"
+            android:layout_height="@dimen/dp_16"
+            app:layout_constraintEnd_toStartOf="@id/tvRating"
+            app:layout_constraintTop_toTopOf="@id/tvDuration"
+            app:layout_constraintBottom_toBottomOf="@id/tvDuration"
+            android:layout_marginEnd="@dimen/dp_8"
+            android:src="@drawable/ic_star"/>
+
+        <TextView
+            android:id="@+id/tvRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/tvDuration"
+            style="@style/TextAppearance.Paragraph.Large.Regular"
+            android:textAlignment="textStart"
+            android:text="4.9"/>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tlResto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDuration"
+            app:tabMode="scrollable"
+            app:tabGravity="start"
+            android:layout_marginTop="@dimen/dp_5">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Main Dishes"/>
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Drinks"/>
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Desserts"/>
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tlResto"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingHorizontal="@dimen/dp_24"
+            android:paddingBottom="@dimen/dp_24"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

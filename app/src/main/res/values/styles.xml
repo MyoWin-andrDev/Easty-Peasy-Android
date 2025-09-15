@@ -10,7 +10,7 @@
 
     <style name="TextAppearance.Heading" parent="TextAppearance.Material3.HeadlineMedium">
         <item name="android:fontFamily">@font/nunito_semibold</item>
-        <item name="android:textSize">28sp</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:autoSizeTextType">uniform</item>
         <item name="android:textStyle">normal</item>
     </style>
@@ -95,7 +95,7 @@
 
     <style name="TextAppearance.Paragraph.Large.Regular">
         <item name="android:fontFamily">@font/lato_regular</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:autoSizeTextType">uniform</item>
         <item name="android:textStyle">normal</item>
     </style>
