@@ -13,3 +13,13 @@ fun Context.loadImageFromResource(
         .load(imageResId)
         .into(imageView)
 }
+
+fun Context.loadImageFromUrl(
+    imageUrl: String,
+    imageView: ImageView
+) {
+    Glide.with(this)
+        .load(imageUrl)
+        .transition(DrawableTransitionOptions.withCrossFade())
+        .into(imageView)
+}

@@ -16,6 +16,7 @@ import com.myowin.eastypeasy.view.adapter.home.RestaurantAdapter
 import com.myowin.eastypeasy.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
@@ -26,7 +27,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
-        setupObserver()
+        setupObservers()
         // Load initial data
         viewModel.loadRestaurants()
 
@@ -35,16 +36,37 @@ class HomeActivity : AppCompatActivity() {
         binding.rvCuisine.adapter = CuisineAdapter(testingCuisineList)
     }
 
-    private fun setupObserver() {
-        lifecycleScope.launch{
+    private fun setupObservers() {
+//        lifecycleScope.launch {
+//            viewModel.isLoading.collect { loading ->
+//                // Show/hide loading indicator if needed
+//                if (loading) {
+//                    Timber.d("Loading restaurants...")
+//                }
+//            }
+//        }
+
+        lifecycleScope.launch {
             viewModel.restaurants.collect { restaurants ->
+                Timber.d("Restaurants updated: ${restaurants.size} items")
                 Log.d("Restaurant", restaurants.toString())
-                if(restaurants.isNotEmpty()){
+                if (restaurants.isNotEmpty()) {
                     binding.rvRestaurantNearYou.adapter = RestaurantAdapter(restaurants)
                     binding.rvPopularRestaurant.adapter = RestaurantAdapter(restaurants)
+                } else {
+                    Timber.d("Restaurants list is empty")
                 }
             }
         }
+
+//        lifecycleScope.launch {
+//            viewModel.error.collect { error ->
+//                error?.let {
+//                    Timber.e("Error loading restaurants: $it")
+//                    // Show error message to user
+//                }
+//            }
+//        }
     }
 
 

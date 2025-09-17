@@ -1,14 +1,15 @@
 package com.myowin.eastypeasy.view.adapter.home
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.myowin.eastypeasy.databinding.ListItemRestaurantBinding
 import com.myowin.eastypeasy.model.dto.RestaurantModel
 import com.myowin.eastypeasy.util.loadImageFromResource
+import com.myowin.eastypeasy.util.loadImageFromUrl
 
-class RestaurantAdapter (val restaurantList : List<RestaurantModel>) : RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder>() {
+class RestaurantAdapter (val restaurantList: List<RestaurantModel>) : RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -25,12 +26,14 @@ class RestaurantAdapter (val restaurantList : List<RestaurantModel>) : RecyclerV
     override fun getItemCount(): Int  = restaurantList.size
 
     inner class RestaurantViewHolder(private val binding : ListItemRestaurantBinding) : RecyclerView.ViewHolder(binding.root){
+        @SuppressLint("SetTextI18n")
         fun bind(restaurant: RestaurantModel) = with(binding){
-            itemView.context.loadImageFromResource(restaurant.restaurantImage, ivRestaurantImage)
+            itemView.context.loadImageFromUrl(restaurant.restaurantImage, ivRestaurantImage)
             tvRestaurantName.text = restaurant.restaurantName
             tvSpecialty.text = restaurant.specialty
             tvRating.text = restaurant.rating.toString()
             tvDuration.text = "${restaurant.distance} mins"
+            tvDelivery.text = restaurant.delivery
         }
     }
 }

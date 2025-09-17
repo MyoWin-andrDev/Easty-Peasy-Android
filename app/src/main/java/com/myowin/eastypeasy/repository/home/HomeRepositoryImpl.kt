@@ -1,5 +1,6 @@
 package com.myowin.eastypeasy.repository.home
 
+import android.util.Log
 import com.myowin.eastypeasy.data.local.DataStoreManager
 import com.myowin.eastypeasy.data.network.safeApiCall
 import com.myowin.eastypeasy.model.dto.RestaurantModel
@@ -8,6 +9,7 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import kotlinx.coroutines.flow.Flow
+import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -25,9 +27,9 @@ class HomeRepositoryImpl @Inject constructor(
 //        dataStoreManager.setFirstLaunch(false)
     }
 
-   override suspend fun fetchRestaurants(): Result<List<RestaurantModel>> {
+    override suspend fun fetchRestaurants(): Result<List<RestaurantModel>> {
         return safeApiCall {
-            client.get(Constant.BASE_URL_RESTAURANT).body<List<RestaurantModel>>()
+           client.get(Constant.BASE_URL_RESTAURANT).body<List<RestaurantModel>>()
         }
     }
 
