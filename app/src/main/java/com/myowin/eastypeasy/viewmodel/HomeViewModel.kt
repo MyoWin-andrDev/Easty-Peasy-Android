@@ -24,13 +24,14 @@ class HomeViewModel @Inject constructor(
 
     fun loadRestaurants() {
         viewModelScope.launch {
-            val result = repository.fetchRestaurants()
-            result.onSuccess { data ->
-                _restaurants.value = data
-            }.onFailure { error ->
-                // handle error
-                Timber.e(error, "Failed to fetch restaurants")
-            }
+            repository.fetchRestaurants()
+                .onSuccess { data ->
+                    _restaurants.value = data
+                }
+                .onFailure { error ->
+                    // handle error
+                    Timber.e(error, "Failed to fetch restaurants")
+                }
         }
     }
 }

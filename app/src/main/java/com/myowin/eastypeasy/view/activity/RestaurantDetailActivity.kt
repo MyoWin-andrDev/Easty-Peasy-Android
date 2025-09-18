@@ -2,43 +2,117 @@ package com.myowin.eastypeasy.view.activity
 
 import android.os.Bundle
 import android.viewbinding.library.activity.viewBinding
+import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.tabs.TabLayout
 import com.myowin.eastypeasy.R
 import com.myowin.eastypeasy.databinding.ActivityRestaurantDetailBinding
-import com.myowin.eastypeasy.view.fragment.restaurant_detail.DessertsFragment
+import com.myowin.eastypeasy.model.dto.MenuCategory
+import com.myowin.eastypeasy.model.dto.MenuItem
+import com.myowin.eastypeasy.model.dto.RestaurantModel
+import com.myowin.eastypeasy.util.loadImageFromUrl
 import com.myowin.eastypeasy.view.fragment.restaurant_detail.MenuFragment
-import com.myowin.eastypeasy.view.fragment.restaurant_detail.MainDishesFragment
+import com.myowin.eastypeasy.viewmodel.RestoDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class RestaurantDetailActivity : AppCompatActivity() {
-    private val binding : ActivityRestaurantDetailBinding by viewBinding()
-    //private val viewModel :
+    private val binding: ActivityRestaurantDetailBinding by viewBinding()
+    private val viewModel: RestoDetailViewModel by viewModels()
+
+    private val restaurantId by lazy { intent.getIntExtra("RESTAURANT_ID", -1)}
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        setupFragment()
+
+        setupClickListeners()
+        setupObservers()
+        fetchRestaurantData()
     }
 
-    private fun setupFragment() {
-        var fragment : Fragment = MainDishesFragment()
-        replaceFragment(fragment)
-        binding.tlResto.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                when(tab?.position){
-                    0 -> fragment = MainDishesFragment()
-                    1 -> fragment = MenuFragment()
-                    2 -> fragment = DessertsFragment()
+    private fun setupClickListeners() {
+        binding.ivBack.setOnClickListener {
+            onBackPressed()
+        }
+
+        binding.ivCart.setOnClickListener {
+            // Handle cart click
+        }
+    }
+
+    private fun fetchRestaurantData() {
+        if (restaurantId != -1 ) {
+            viewModel.fetchRestaurantDetail(restaurantId)
+        }
+    }
+
+    private fun setupObservers() {
+        observeRestaurant()
+        observeMenuItems()
+    }
+
+    private fun observeRestaurant() {
+        lifecycleScope.launch {
+            viewModel.restaurant.collectLatest { restaurant ->
+                restaurant?.let {
+                    updateUI(it)
+                    setupTabs(it.menuCategories)
                 }
-                replaceFragment(fragment)
+            }
+        }
+    }
+
+    private fun observeMenuItems() {
+        lifecycleScope.launch {
+            viewModel.category.collectLatest { menuItems ->
+                val viewType = viewModel.currentViewType.value
+                updateMenuFragment(menuItems, viewType)
+            }
+        }
+    }
+
+
+
+    private fun updateUI(restaurant: RestaurantModel) {
+        binding.tvRestoName.text = restaurant.restaurantName // Changed from name to restaurantName
+        binding.tvRestaurantAddress.text = restaurant.address
+        binding.tvRating.text = restaurant.rating.toString()
+        binding.tvDuration.text = "${restaurant.distance} mins" // Changed from Int to Float
+
+    }
+
+    private fun setupTabs(categories: List<MenuCategory>) {
+        binding.tlResto.removeAllTabs()
+
+        categories.forEach { category ->
+            val tab = binding.tlResto.newTab().apply {
+                text = category.name
+                tag = category.id
+            }
+            binding.tlResto.addTab(tab)
+        }
+
+        binding.tlResto.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                val categoryId = tab?.tag as? Int
+                categoryId?.let {
+                    viewModel.selectCategory(it)
+                }
             }
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
     }
-    private fun replaceFragment(fragment : Fragment){
-        supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, fragment).addToBackStack("").commit()
+
+    private fun updateMenuFragment(menuItems: List<MenuItem>, viewType: Int) {
+        val fragment = MenuFragment.newInstance(menuItems, viewType)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
+            .commit()
     }
 }

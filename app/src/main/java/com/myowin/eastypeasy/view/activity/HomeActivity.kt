@@ -28,28 +28,22 @@ class HomeActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
         setupObservers()
-        // Load initial data
-        viewModel.loadRestaurants()
+        loadInitialData()
 
 
 
         binding.rvCuisine.adapter = CuisineAdapter(testingCuisineList)
     }
 
+    private fun loadInitialData(){
+        viewModel.loadRestaurants()
+    }
+
     private fun setupObservers() {
-//        lifecycleScope.launch {
-//            viewModel.isLoading.collect { loading ->
-//                // Show/hide loading indicator if needed
-//                if (loading) {
-//                    Timber.d("Loading restaurants...")
-//                }
-//            }
-//        }
 
         lifecycleScope.launch {
             viewModel.restaurants.collect { restaurants ->
                 Timber.d("Restaurants updated: ${restaurants.size} items")
-                Log.d("Restaurant", restaurants.toString())
                 if (restaurants.isNotEmpty()) {
                     binding.rvRestaurantNearYou.adapter = RestaurantAdapter(restaurants)
                     binding.rvPopularRestaurant.adapter = RestaurantAdapter(restaurants)
@@ -59,14 +53,6 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
-//        lifecycleScope.launch {
-//            viewModel.error.collect { error ->
-//                error?.let {
-//                    Timber.e("Error loading restaurants: $it")
-//                    // Show error message to user
-//                }
-//            }
-//        }
     }
 
 

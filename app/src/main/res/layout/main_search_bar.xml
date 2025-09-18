@@ -52,7 +52,7 @@
                     style="@style/TextAppearance.Paragraph.Large.Medium"
                     android:background="@null"
                     android:hint="Search Food and Drink"
-                    android:textColor="@color/textPlaceHolder"
+                    android:textColorHint="@color/textPlaceHolder"
                     android:imeOptions="actionSearch"
                     android:maxLines="1"
                     android:paddingHorizontal="16dp" />

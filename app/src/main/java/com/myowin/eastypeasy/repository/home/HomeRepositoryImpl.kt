@@ -1,6 +1,5 @@
 package com.myowin.eastypeasy.repository.home
 
-import android.util.Log
 import com.myowin.eastypeasy.data.local.DataStoreManager
 import com.myowin.eastypeasy.data.network.safeApiCall
 import com.myowin.eastypeasy.model.dto.RestaurantModel
@@ -9,7 +8,6 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import kotlinx.coroutines.flow.Flow
-import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 

@@ -20,6 +20,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
-        tools:listitem="@layout/list_item_dishes"/>
+        tools:listitem="@layout/item_menu_grid"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
