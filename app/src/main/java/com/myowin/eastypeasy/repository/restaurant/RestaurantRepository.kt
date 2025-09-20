@@ -1,7 +1,7 @@
-package com.myowin.eastypeasy.repository.restaurant_detail
+package com.myowin.eastypeasy.repository.restaurant
 
 import com.myowin.eastypeasy.model.dto.RestaurantModel
 
-interface RestoDetailRepository{
+interface RestaurantRepository{
     suspend fun fetchRestaurantDetail(restaurantId : Int) : Result<RestaurantModel>
 }

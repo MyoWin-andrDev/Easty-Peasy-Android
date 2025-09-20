@@ -1,4 +1,4 @@
-package com.myowin.eastypeasy.repository.restaurant_detail
+package com.myowin.eastypeasy.repository.restaurant
 
 import com.myowin.eastypeasy.data.network.safeApiCall
 import com.myowin.eastypeasy.model.dto.RestaurantModel
@@ -10,12 +10,12 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class RestoDetailRepositoryImpl @Inject constructor(
+class RestaurantRepositoryImpl @Inject constructor(
     private val client : HttpClient
-) : RestoDetailRepository {
+) : RestaurantRepository {
     override suspend fun fetchRestaurantDetail(restaurantId: Int): Result<RestaurantModel> {
         return safeApiCall {
-            client.get(Constant.BASE_URL_RESTAURANT + 1 ).body()
+            client.get(Constant.BASE_URL_RESTAURANT + restaurantId ).body()
         }
     }
 }

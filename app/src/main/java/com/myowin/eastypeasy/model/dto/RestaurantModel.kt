@@ -34,4 +34,36 @@ data class MenuItem(
     val amount : Float = 0.0f,
     val availability : Boolean = true,
     val noteToRestaurant : String = "",
+    val mandatoryOption : List<MandatoryOption> = emptyList<MandatoryOption>(),
+    val addOnOption : List<AddOnOption>
+)
+
+@Serializable
+data class MandatoryOption(
+    val id : Int = 0,
+    val title : String = "",
+    val itemList : List<MandatoryItem> = emptyList()
+)
+
+@Serializable
+data class MandatoryItem(
+    val id : Int = 0,
+    val title : String = "",
+    val amount : Float = 0.0f,
+    val isSelected : Boolean = false
+)
+
+@Serializable
+data class AddOnOption(
+    val id : Int = 0,
+    val title : String = "",
+    val itemList : List<AddonItem> = emptyList()
+)
+
+@Serializable
+data class AddonItem(
+    val id : Int = 0,
+    val title : String = "",
+    val amount : Float = 0.0f,
+    val isSelected : Boolean = false
 )

@@ -9,7 +9,10 @@ import com.myowin.eastypeasy.model.dto.RestaurantModel
 import com.myowin.eastypeasy.util.loadImageFromResource
 import com.myowin.eastypeasy.util.loadImageFromUrl
 
-class RestaurantAdapter (val restaurantList: List<RestaurantModel>) : RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder>() {
+class RestaurantAdapter (
+    val restaurantList: List<RestaurantModel>,
+    private val onItemClick: (RestaurantModel) -> Unit
+) : RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -34,6 +37,10 @@ class RestaurantAdapter (val restaurantList: List<RestaurantModel>) : RecyclerVi
             tvRating.text = restaurant.rating.toString()
             tvDuration.text = "${restaurant.distance} mins"
             tvDelivery.text = restaurant.delivery
+
+            itemView.setOnClickListener {
+                onItemClick(restaurant)
+            }
         }
     }
 }

@@ -2,8 +2,10 @@ package com.myowin.eastypeasy.di
 
 import com.myowin.eastypeasy.repository.home.HomeRepository
 import com.myowin.eastypeasy.repository.home.HomeRepositoryImpl
-import com.myowin.eastypeasy.repository.restaurant_detail.RestoDetailRepository
-import com.myowin.eastypeasy.repository.restaurant_detail.RestoDetailRepositoryImpl
+import com.myowin.eastypeasy.repository.menu.MenuItemRepository
+import com.myowin.eastypeasy.repository.menu.MenuItemRepositoryImpl
+import com.myowin.eastypeasy.repository.restaurant.RestaurantRepository
+import com.myowin.eastypeasy.repository.restaurant.RestaurantRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -22,7 +24,13 @@ abstract class RepositoryModule {
 
     @Binds
     @Singleton
-    abstract fun bindRestoDetailRepository(
-        restoDetailRepositoryImpl: RestoDetailRepositoryImpl
-    ): RestoDetailRepository
+    abstract fun bindRestaurantDetailRepository(
+        restaurantDetailRepositoryImpl : RestaurantRepositoryImpl
+    ): RestaurantRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindMenuItemRepositoryRepository(
+        menuItemRepositoryImpl: MenuItemRepositoryImpl
+    ) : MenuItemRepository
 }

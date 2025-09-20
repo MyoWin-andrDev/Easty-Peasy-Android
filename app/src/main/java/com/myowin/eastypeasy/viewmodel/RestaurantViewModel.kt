@@ -1,12 +1,12 @@
 package com.myowin.eastypeasy.viewmodel
 
-import android.view.Menu
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.myowin.eastypeasy.model.dto.MenuCategory
 import com.myowin.eastypeasy.model.dto.MenuItem
 import com.myowin.eastypeasy.model.dto.RestaurantModel
-import com.myowin.eastypeasy.repository.restaurant_detail.RestoDetailRepository
+import com.myowin.eastypeasy.repository.restaurant.RestaurantRepository
+import com.myowin.eastypeasy.util.testRestaurant
 import com.myowin.eastypeasy.view.adapter.restaurant_detail.MenuAdapter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,8 +16,8 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class RestoDetailViewModel @Inject constructor(
-    private val repository: RestoDetailRepository
+class RestaurantViewModel @Inject constructor(
+    private val repository: RestaurantRepository
 )  : ViewModel() {
 
     private val _restaurant = MutableStateFlow<RestaurantModel?>(null)
@@ -33,10 +33,19 @@ class RestoDetailViewModel @Inject constructor(
         viewModelScope.launch {
             repository.fetchRestaurantDetail(restaurantId)
                 .onSuccess { data ->
-                    _restaurant.value = data
+                    _restaurant.value = testRestaurant
+
+                    testRestaurant.menuCategories.firstOrNull()?.let { category ->
+                        _category.value = category.menuItemList
+                        _currentViewType.value = category.viewType
+                    }
                 }
                 .onFailure { error ->
-                    Timber.e(error, "Failed to fetch restaurant's details")
+                    _restaurant.value = testRestaurant
+                    testRestaurant.menuCategories.firstOrNull()?.let { category ->
+                        _category.value = category.menuItemList
+                        _currentViewType.value = category.viewType
+                    }
                 }
         }
     }

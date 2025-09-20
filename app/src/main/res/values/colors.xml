@@ -43,5 +43,5 @@
     <color name="textInactive">#898D8F</color>
     <color name="textGreyLight">#7C7676</color>
     <color name="textGreyDark">#4D4D4D</color>
-    <color name="textPlaceHolder">#898D8F</color>
+    <color name="textPlaceHolder">#BABABA</color>
 </resources>

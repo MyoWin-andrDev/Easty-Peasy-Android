@@ -1,28 +1,27 @@
 package com.myowin.eastypeasy.view.activity
 
 import android.os.Bundle
+import android.util.Log
 import android.viewbinding.library.activity.viewBinding
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.tabs.TabLayout
 import com.myowin.eastypeasy.R
-import com.myowin.eastypeasy.databinding.ActivityRestaurantDetailBinding
+import com.myowin.eastypeasy.databinding.ActivityRestaurantBinding
 import com.myowin.eastypeasy.model.dto.MenuCategory
 import com.myowin.eastypeasy.model.dto.MenuItem
 import com.myowin.eastypeasy.model.dto.RestaurantModel
-import com.myowin.eastypeasy.util.loadImageFromUrl
 import com.myowin.eastypeasy.view.fragment.restaurant_detail.MenuFragment
-import com.myowin.eastypeasy.viewmodel.RestoDetailViewModel
+import com.myowin.eastypeasy.viewmodel.RestaurantViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class RestaurantDetailActivity : AppCompatActivity() {
-    private val binding: ActivityRestaurantDetailBinding by viewBinding()
-    private val viewModel: RestoDetailViewModel by viewModels()
+class RestaurantActivity : AppCompatActivity() {
+    private val binding: ActivityRestaurantBinding by viewBinding()
+    private val viewModel: RestaurantViewModel by viewModels()
 
     private val restaurantId by lazy { intent.getIntExtra("RESTAURANT_ID", -1)}
 
@@ -62,6 +61,9 @@ class RestaurantDetailActivity : AppCompatActivity() {
                 restaurant?.let {
                     updateUI(it)
                     setupTabs(it.menuCategories)
+                    it.menuCategories.firstOrNull()?.let { category ->
+                        viewModel.selectCategory(category.id)
+                    }
                 }
             }
         }

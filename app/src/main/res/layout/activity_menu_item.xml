@@ -91,7 +91,7 @@
                 style="@style/TextAppearance.Paragraph.Large.Regular"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_8"
                 android:text="Classic Frappe"
                 android:textAlignment="textStart"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -103,7 +103,6 @@
                 style="@style/TextAppearance.Heading.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/dp_10"
                 android:text="Base Price"
                 android:textAlignment="textStart"
                 android:textColor="@color/textInactive"
@@ -116,11 +115,141 @@
                 style="@style/TextAppearance.Paragraph.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_8"
                 android:text="A luxurious coffee frappe, blending rich espresso, creamy milk, and sweet syrup whipped with ice."
                 android:textColor="@color/textGreyDark"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvMenuType" />
+
+            <include
+                android:id="@+id/divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDescription"
+                android:layout_marginTop="16dp"
+                layout="@layout/layout_divider"/>
+
+
+            <include
+                android:id="@+id/layoutMandatory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider"
+                layout="@layout/layout_mandatory"/>
+
+            <include
+                android:id="@+id/layoutOptional"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutMandatory"
+                layout="@layout/layout_optional"/>
+
+            <TextView
+                android:id="@+id/tvNoteToRestaurant"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.Heading.Normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutOptional"
+                android:text="Note To Restaurant"
+                android:paddingVertical="@dimen/dp_8"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.Paragraph.Tiny"
+                app:layout_constraintTop_toTopOf="@id/tvNoteToRestaurant"
+                app:layout_constraintBottom_toBottomOf="@id/tvNoteToRestaurant"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Optional"
+                android:textColor="@color/colorSecondary"
+                android:background="@drawable/bg_pick"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ilNoteToRestaurant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvNoteToRestaurant">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNoteToRestaurant"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Add Your Request"
+                    android:textColorHint="@color/textPlaceHolder"
+                    android:background="@drawable/bg_edit_text"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/llStepper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ilNoteToRestaurant"
+                android:layout_marginTop="@dimen/dp_24"
+                android:layout_marginHorizontal="@dimen/dp_56">
+
+                <ImageButton
+                    android:id="@+id/ibMinus"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_stepper_minus"
+                    android:src="@drawable/ic_minus"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextAppearance.Heading.Normal"
+                    android:text="1"
+                    android:gravity="center"
+                    app:layout_constraintStart_toEndOf="@id/ibMinus"
+                    app:layout_constraintEnd_toStartOf="@id/ibAdd"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/ibAdd"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_stepper_add"
+                    android:src="@drawable/ic_add"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/llStepper"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Add To Cart"
+                android:textSize="16sp"
+                android:padding="@dimen/dp_16"
+                android:layout_marginHorizontal="@dimen/dp_24"
+                android:layout_marginTop="@dimen/dp_24"
+                android:fontFamily="@font/lato_bold"/>
+
+
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

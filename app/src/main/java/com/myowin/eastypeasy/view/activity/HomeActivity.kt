@@ -1,15 +1,15 @@
 package com.myowin.eastypeasy.view.activity
 
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.viewbinding.library.activity.viewBinding
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.myowin.eastypeasy.databinding.ActivityHomeBinding
-import com.myowin.eastypeasy.util.testRestaurantList
+import com.myowin.eastypeasy.model.dto.RestaurantModel
 import com.myowin.eastypeasy.util.testingCuisineList
 import com.myowin.eastypeasy.view.adapter.home.CuisineAdapter
 import com.myowin.eastypeasy.view.adapter.home.RestaurantAdapter
@@ -45,14 +45,23 @@ class HomeActivity : AppCompatActivity() {
             viewModel.restaurants.collect { restaurants ->
                 Timber.d("Restaurants updated: ${restaurants.size} items")
                 if (restaurants.isNotEmpty()) {
-                    binding.rvRestaurantNearYou.adapter = RestaurantAdapter(restaurants)
-                    binding.rvPopularRestaurant.adapter = RestaurantAdapter(restaurants)
+                    binding.rvRestaurantNearYou.adapter = RestaurantAdapter(restaurants){navigateToRestaurantDetail(it)}
+                    binding.rvPopularRestaurant.adapter = RestaurantAdapter(restaurants){navigateToRestaurantDetail(it)}
                 } else {
                     Timber.d("Restaurants list is empty")
                 }
             }
         }
 
+    }
+
+    private fun navigateToRestaurantDetail(restaurant: RestaurantModel) {
+        val intent = Intent(this, RestaurantActivity::class.java).apply {
+            putExtra("RESTAURANT_ID", restaurant.restaurantId)
+            // You can also pass the entire restaurant object if needed
+            putExtra("RESTAURANT_NAME", restaurant.restaurantName)
+        }
+        startActivity(intent)
     }
 
 

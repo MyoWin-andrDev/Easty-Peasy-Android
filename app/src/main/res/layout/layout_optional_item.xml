@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/clCheckbox"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <CheckBox
+        android:id="@+id/cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.Paragraph.Large.Regular"
+        app:layout_constraintStart_toEndOf="@id/cb"
+        app:layout_constraintTop_toTopOf="@id/cb"
+        app:layout_constraintBottom_toBottomOf="@id/cb"
+        android:paddingStart="@dimen/dp_8"
+        android:text="Extra Shrimp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.Paragraph.Large.Regular"
+        app:layout_constraintTop_toTopOf="@id/cb"
+        app:layout_constraintBottom_toBottomOf="@id/cb"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="+ $3"
+        android:paddingEnd="@dimen/dp_16"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
