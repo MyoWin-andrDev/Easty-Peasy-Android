@@ -1,5 +1,6 @@
 package com.myowin.eastypeasy.repository.restaurant
 
+import android.util.Log
 import com.myowin.eastypeasy.data.network.safeApiCall
 import com.myowin.eastypeasy.model.dto.RestaurantModel
 import com.myowin.eastypeasy.util.Constant
@@ -15,7 +16,9 @@ class RestaurantRepositoryImpl @Inject constructor(
 ) : RestaurantRepository {
     override suspend fun fetchRestaurantDetail(restaurantId: Int): Result<RestaurantModel> {
         return safeApiCall {
-            client.get(Constant.BASE_URL_RESTAURANT + restaurantId ).body()
+            val resResponse = client.get(Constant.BASE_URL_RESTAURANT + restaurantId ).body<RestaurantModel>()
+            Log.d("ResResponse",resResponse.toString())
+            resResponse
         }
     }
 }

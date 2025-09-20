@@ -3,6 +3,7 @@ package com.myowin.eastypeasy.view.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.viewbinding.library.activity.viewBinding
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -61,6 +62,7 @@ class HomeActivity : AppCompatActivity() {
             // You can also pass the entire restaurant object if needed
             putExtra("RESTAURANT_NAME", restaurant.restaurantName)
         }
+        Log.d("HomeID",restaurant.restaurantId.toString())
         startActivity(intent)
     }
 

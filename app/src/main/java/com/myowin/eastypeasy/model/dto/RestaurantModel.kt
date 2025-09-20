@@ -35,7 +35,7 @@ data class MenuItem(
     val availability : Boolean = true,
     val noteToRestaurant : String = "",
     val mandatoryOption : List<MandatoryOption> = emptyList<MandatoryOption>(),
-    val addOnOption : List<AddOnOption>
+    val addOnOption : List<AddOnOption> = emptyList()
 )
 
 @Serializable

@@ -28,10 +28,10 @@ class RestaurantActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
         setupClickListeners()
         setupObservers()
         fetchRestaurantData()
+        Log.d("ResID",restaurantId.toString())
     }
 
     private fun setupClickListeners() {
@@ -47,6 +47,7 @@ class RestaurantActivity : AppCompatActivity() {
     private fun fetchRestaurantData() {
         if (restaurantId != -1 ) {
             viewModel.fetchRestaurantDetail(restaurantId)
+            Log.d("ID",restaurantId.toString())
         }
     }
 
@@ -58,6 +59,7 @@ class RestaurantActivity : AppCompatActivity() {
     private fun observeRestaurant() {
         lifecycleScope.launch {
             viewModel.restaurant.collectLatest { restaurant ->
+                Log.d("restaurant111", restaurant.toString())
                 restaurant?.let {
                     updateUI(it)
                     setupTabs(it.menuCategories)

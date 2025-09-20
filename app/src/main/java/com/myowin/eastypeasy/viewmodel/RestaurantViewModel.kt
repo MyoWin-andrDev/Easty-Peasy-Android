@@ -33,9 +33,10 @@ class RestaurantViewModel @Inject constructor(
         viewModelScope.launch {
             repository.fetchRestaurantDetail(restaurantId)
                 .onSuccess { data ->
-                    _restaurant.value = testRestaurant
+                    _restaurant.emit(data)
+                    Log.d("Resdata",data.toString())
 
-                    testRestaurant.menuCategories.firstOrNull()?.let { category ->
+                    data.menuCategories.firstOrNull()?.let { category ->
                         _category.value = category.menuItemList
                         _currentViewType.value = category.viewType
                     }

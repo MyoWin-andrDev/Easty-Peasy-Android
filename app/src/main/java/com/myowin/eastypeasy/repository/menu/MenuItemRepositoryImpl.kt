@@ -1,4 +1,8 @@
 package com.myowin.eastypeasy.repository.menu
 
-class MenuItemRepositoryImpl {
+import javax.inject.Inject
+import javax.inject.Singleton
+
+@Singleton
+class MenuItemRepositoryImpl @Inject constructor() : MenuItemRepository{
 }
