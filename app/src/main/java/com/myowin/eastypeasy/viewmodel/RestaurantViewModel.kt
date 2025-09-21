@@ -29,32 +29,20 @@ class RestaurantViewModel @Inject constructor(
     private val _currentViewType = MutableStateFlow(MenuAdapter.VIEW_TYPE_GRID)
     val currentViewType: StateFlow<Int> = _currentViewType
 
-    fun fetchRestaurantDetail(restaurantId : Int){
-        viewModelScope.launch {
-            repository.fetchRestaurantDetail(restaurantId)
-                .onSuccess { data ->
-                    _restaurant.emit(data)
-                    Log.d("Resdata",data.toString())
-
-                    data.menuCategories.firstOrNull()?.let { category ->
-                        _category.value = category.menuItemList
-                        _currentViewType.value = category.viewType
-                    }
-                }
-                .onFailure { error ->
-                    _restaurant.value = testRestaurant
-                    testRestaurant.menuCategories.firstOrNull()?.let { category ->
-                        _category.value = category.menuItemList
-                        _currentViewType.value = category.viewType
-                    }
-                }
-        }
-    }
-
-    fun selectCategory(categoryId : Int){
-        restaurant.value?.menuCategories?.find { it.id == categoryId }?.let{ category ->
+    fun setRestaurant(restaurant: RestaurantModel) {
+        _restaurant.value = restaurant
+        restaurant.menuCategories.firstOrNull()?.let { category ->
             _category.value = category.menuItemList
             _currentViewType.value = category.viewType
+        }
+        Log.d("RestaurantViewModel", "Restaurant set: ${restaurant.restaurantName}")
+    }
+
+    fun selectCategory(categoryId: Int) {
+        restaurant.value?.menuCategories?.find { it.id == categoryId }?.let { category ->
+            _category.value = category.menuItemList
+            _currentViewType.value = category.viewType
+            Log.d("RestaurantViewModel", "Selected category: $categoryId")
         }
     }
 

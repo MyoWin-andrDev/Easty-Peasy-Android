@@ -1,5 +1,6 @@
 package com.myowin.eastypeasy.data.network
 
+import android.util.Log
 import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.ServerResponseException
 import java.io.IOException
@@ -16,6 +17,7 @@ suspend fun <T> safeApiCall(apiCall: suspend () -> T): Result<T> {
         // 5xx errors
         Result.failure(IOException("Server error: ${e.response.status}", e))
     } catch (e: Exception) {
+        Log.d("Error",e.toString())
         Result.failure(IOException("Unknown error", e))
     }
 }

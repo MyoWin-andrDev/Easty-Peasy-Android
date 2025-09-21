@@ -23,15 +23,15 @@ class RestaurantActivity : AppCompatActivity() {
     private val binding: ActivityRestaurantBinding by viewBinding()
     private val viewModel: RestaurantViewModel by viewModels()
 
-    private val restaurantId by lazy { intent.getIntExtra("RESTAURANT_ID", -1)}
+    private val restaurant by lazy { intent.getSerializableExtra("RESTAURANT_JSON")}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setupClickListeners()
         setupObservers()
-        fetchRestaurantData()
-        Log.d("ResID",restaurantId.toString())
+        setResturant()
+
     }
 
     private fun setupClickListeners() {
@@ -44,11 +44,8 @@ class RestaurantActivity : AppCompatActivity() {
         }
     }
 
-    private fun fetchRestaurantData() {
-        if (restaurantId != -1 ) {
-            viewModel.fetchRestaurantDetail(restaurantId)
-            Log.d("ID",restaurantId.toString())
-        }
+    private fun setResturant() {
+        viewModel.setRestaurant(restaurant)
     }
 
     private fun setupObservers() {
@@ -58,7 +55,8 @@ class RestaurantActivity : AppCompatActivity() {
 
     private fun observeRestaurant() {
         lifecycleScope.launch {
-            viewModel.restaurant.collectLatest { restaurant ->
+            viewModel.restaurant
+                .collectLatest { restaurant ->
                 Log.d("restaurant111", restaurant.toString())
                 restaurant?.let {
                     updateUI(it)

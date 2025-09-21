@@ -17,6 +17,8 @@ import com.myowin.eastypeasy.view.adapter.home.RestaurantAdapter
 import com.myowin.eastypeasy.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.encodeToString
 import timber.log.Timber
 
 @AndroidEntryPoint
@@ -58,11 +60,9 @@ class HomeActivity : AppCompatActivity() {
 
     private fun navigateToRestaurantDetail(restaurant: RestaurantModel) {
         val intent = Intent(this, RestaurantActivity::class.java).apply {
-            putExtra("RESTAURANT_ID", restaurant.restaurantId)
-            // You can also pass the entire restaurant object if needed
-            putExtra("RESTAURANT_NAME", restaurant.restaurantName)
+            val jsonString = Json.encodeToString(restaurant)
+            putExtra("RESTAURANT_JSON", jsonString)
         }
-        Log.d("HomeID",restaurant.restaurantId.toString())
         startActivity(intent)
     }
 

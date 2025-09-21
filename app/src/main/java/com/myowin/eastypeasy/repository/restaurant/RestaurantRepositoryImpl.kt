@@ -14,11 +14,11 @@ import javax.inject.Singleton
 class RestaurantRepositoryImpl @Inject constructor(
     private val client : HttpClient
 ) : RestaurantRepository {
-    override suspend fun fetchRestaurantDetail(restaurantId: Int): Result<RestaurantModel> {
-        return safeApiCall {
-            val resResponse = client.get(Constant.BASE_URL_RESTAURANT + restaurantId ).body<RestaurantModel>()
-            Log.d("ResResponse",resResponse.toString())
-            resResponse
-        }
-    }
+//    override suspend fun fetchRestaurantDetail(restaurantId: Int): Result<RestaurantModel> {
+//        return safeApiCall {
+//            val resResponse = client.get(Constant.BASE_URL_RESTAURANT + restaurantId ).body<RestaurantModel>()
+//            Log.d("ResResponse",resResponse.toString())
+//            resResponse
+//        }
+//    }
 }
