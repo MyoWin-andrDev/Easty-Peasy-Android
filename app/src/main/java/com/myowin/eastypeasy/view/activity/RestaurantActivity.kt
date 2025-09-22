@@ -30,7 +30,7 @@ class RestaurantActivity : AppCompatActivity() {
         setContentView(binding.root)
         setupClickListeners()
         setupObservers()
-        setResturant()
+        setRestaurant()
 
     }
 
@@ -44,8 +44,10 @@ class RestaurantActivity : AppCompatActivity() {
         }
     }
 
-    private fun setResturant() {
-        viewModel.setRestaurant(restaurant)
+    private fun setRestaurant() {
+        if(restaurant != null){
+            viewModel.setRestaurant(restaurant as RestaurantModel)
+        }
     }
 
     private fun setupObservers() {
