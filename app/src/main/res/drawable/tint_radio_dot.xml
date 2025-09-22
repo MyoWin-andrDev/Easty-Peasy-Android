@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- When checked: show white dot -->
+    <item android:color="@android:color/white" android:state_checked="true" />
+    <!-- When unchecked: make dot transparent (hidden) -->
+    <item android:color="@android:color/transparent" android:state_checked="false" />
+</selector>

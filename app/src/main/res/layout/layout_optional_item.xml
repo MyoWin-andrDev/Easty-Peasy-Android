@@ -10,7 +10,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minWidth="0dp"
-        android:buttonTint="@drawable/bg_checkbox"
+        app:buttonTint="@drawable/bg_checkbox"
+        app:buttonIcon="@drawable/ic_checkmark"
+        app:buttonIconTint="@drawable/tint_checkmark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
