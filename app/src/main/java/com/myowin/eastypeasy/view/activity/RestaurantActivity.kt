@@ -31,6 +31,7 @@ class RestaurantActivity : AppCompatActivity() {
         setupClickListeners()
         setupObservers()
         setRestaurant()
+        Log.d("Restaurant",restaurant.toString())
 
     }
 

@@ -240,11 +240,13 @@
                 app:layout_constraintTop_toBottomOf="@id/llStepper"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:text="Add To Cart"
                 android:textSize="16sp"
                 android:padding="@dimen/dp_16"
                 android:layout_marginHorizontal="@dimen/dp_24"
                 android:layout_marginTop="@dimen/dp_24"
+                android:layout_marginBottom="@dimen/dp_48"
                 android:fontFamily="@font/lato_bold"/>
 
 
