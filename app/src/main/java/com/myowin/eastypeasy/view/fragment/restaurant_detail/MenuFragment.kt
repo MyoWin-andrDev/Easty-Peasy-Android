@@ -1,5 +1,6 @@
 package com.myowin.eastypeasy.view.fragment.restaurant_detail
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.myowin.eastypeasy.R
 import com.myowin.eastypeasy.databinding.FragmentMenuBinding
 import com.myowin.eastypeasy.model.dto.MenuItem
+import com.myowin.eastypeasy.view.activity.MenuItemActivity
 import com.myowin.eastypeasy.view.adapter.restaurant_detail.MenuAdapter
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -53,6 +55,14 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         }
 
         // Use your MenuAdapter - it handles both view types internally!
-        binding.rvMenu.adapter = MenuAdapter(menuItems, viewType)
+        binding.rvMenu.adapter = MenuAdapter(menuItems, viewType){ menuItems -> navigateToMenuItemDetail(menuItems) }
+    }
+
+
+    private fun navigateToMenuItemDetail(menuItem: MenuItem) {
+        val intent = Intent(requireActivity(), MenuItemActivity::class.java).apply {
+            putExtra(MenuItemActivity.EXTRA_MENU_ITEM, menuItem)
+        }
+        startActivity(intent)
     }
 }

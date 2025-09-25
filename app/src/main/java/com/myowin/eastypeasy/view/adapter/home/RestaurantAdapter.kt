@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.myowin.eastypeasy.databinding.ListItemRestaurantBinding
 import com.myowin.eastypeasy.model.dto.RestaurantModel
-import com.myowin.eastypeasy.util.loadImageFromResource
 import com.myowin.eastypeasy.util.loadImageFromUrl
 
 class RestaurantAdapter (
@@ -35,7 +34,7 @@ class RestaurantAdapter (
             tvRestaurantName.text = restaurant.restaurantName
             tvSpecialty.text = restaurant.specialty
             tvRating.text = restaurant.rating.toString()
-            tvDuration.text = "${restaurant.distance} mins"
+            tvDuration.text = "${restaurant.duration} mins"
             tvDelivery.text = restaurant.delivery
 
             itemView.setOnClickListener {

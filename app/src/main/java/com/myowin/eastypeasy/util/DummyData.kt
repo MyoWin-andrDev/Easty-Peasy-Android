@@ -15,7 +15,7 @@ val testRestaurant = RestaurantModel(
     rating = 4.5f,
     address = "463/68 Beachfront, Pattaya",
     specialty = "Seafood & International",
-    distance = 2.3f,
+    duration = 2.3f,
     menuCategories = listOf(
         // Grid view category
         MenuCategory(

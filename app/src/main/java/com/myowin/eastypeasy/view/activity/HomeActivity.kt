@@ -34,7 +34,6 @@ class HomeActivity : AppCompatActivity() {
         loadInitialData()
 
 
-
         binding.rvCuisine.adapter = CuisineAdapter(testingCuisineList)
     }
 
@@ -60,8 +59,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun navigateToRestaurantDetail(restaurant: RestaurantModel) {
         val intent = Intent(this, RestaurantActivity::class.java).apply {
-            val jsonString = Json.encodeToString(restaurant)
-            putExtra("RESTAURANT_JSON", jsonString)
+            putExtra("RESTAURANT_PARCELABLE", restaurant)
         }
         startActivity(intent)
     }

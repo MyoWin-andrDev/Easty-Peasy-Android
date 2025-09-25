@@ -6,10 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.myowin.eastypeasy.databinding.ItemMenuListBinding
 import com.myowin.eastypeasy.databinding.ItemMenuGridBinding
 import com.myowin.eastypeasy.model.dto.MenuItem
+import com.myowin.eastypeasy.util.loadImageFromUrl
 
 class MenuAdapter(
     private val menuItems: List<MenuItem>,
-    private val viewType: Int = VIEW_TYPE_GRID // Default to grid
+    private val viewType: Int = VIEW_TYPE_GRID ,// Default to grid
+
+    private val onItemClick: (MenuItem) -> Unit,
+
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -50,18 +54,21 @@ class MenuAdapter(
         val item = menuItems[position]
 
         when (holder) {
-            is GridViewHolder -> {
+            is GridViewHolder -> with(holder.binding){
                 // Bind to grid layout
-                holder.binding.tvName.text = item.name
-                holder.binding.tvPrice.text = "$${item.amount}"
-                // Load image etc.
+                tvName.text = item.name
+                tvPrice.text = "$${item.amount}"
+                tvDescription.text = item.description
+                holder.itemView.context.loadImageFromUrl(item.imageUrl, ivMenu)
+                clGridView.setOnClickListener { onItemClick(item) }
             }
-            is ListViewHolder -> {
+            is ListViewHolder -> with(holder.binding){
                 // Bind to list layout
-                holder.binding.tvName.text = item.name
-                holder.binding.tvDescription.text = item.description
-                holder.binding.tvPrice.text = "$${item.amount}"
-                // Load image etc.
+                tvName.text = item.name
+                tvPrice.text = "$${item.amount}"
+                tvDescription.text = item.description
+                holder.itemView.context.loadImageFromUrl(item.imageUrl, ivMenu)
+                clListView.setOnClickListener { onItemClick(item) }
             }
         }
     }
