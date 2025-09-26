@@ -1,24 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/clRadioButton"
+<com.google.android.material.radiobutton.MaterialRadioButton
+    android:id="@+id/rb"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:minWidth="0dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:buttonTint="@drawable/bg_radiobutton"
+    app:buttonIcon="@drawable/ic_radio_dot"
+    app:buttonIconTint="@drawable/tint_radio_dot"
+    android:text="Garlic Butter"
+    android:textSize="16sp"
+    android:paddingStart="@dimen/dp_8"
+    android:fontFamily="@font/lato_regular"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" />
 
-    <com.google.android.material.radiobutton.MaterialRadioButton
-        android:id="@+id/rb"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minWidth="0dp"
-        android:minHeight="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:buttonTint="@drawable/bg_radiobutton"
-        app:buttonIcon="@drawable/ic_radio_dot"
-        app:buttonIconTint="@drawable/tint_radio_dot"
-        android:text="Garlic Butter"
-        android:textSize="16sp"
-        android:paddingStart="@dimen/dp_8"
-        android:fontFamily="@font/lato_regular"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>

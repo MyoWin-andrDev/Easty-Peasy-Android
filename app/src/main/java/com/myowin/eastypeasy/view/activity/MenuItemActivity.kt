@@ -1,20 +1,29 @@
 package com.myowin.eastypeasy.view.activity
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.viewbinding.library.activity.viewBinding
+import android.widget.LinearLayout
 import android.widget.RadioGroup
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.checkbox.MaterialCheckBox
+import com.google.android.material.radiobutton.MaterialRadioButton
 import com.myowin.eastypeasy.R
 import com.myowin.eastypeasy.databinding.ActivityMenuItemBinding
+import com.myowin.eastypeasy.model.dto.AddOnOption
 import com.myowin.eastypeasy.model.dto.AddonItem
 import com.myowin.eastypeasy.model.dto.MandatoryItem
+import com.myowin.eastypeasy.model.dto.MandatoryOption
 import com.myowin.eastypeasy.model.dto.MenuItem
 import com.myowin.eastypeasy.viewmodel.MenuItemViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @AndroidEntryPoint
@@ -30,167 +39,137 @@ class MenuItemActivity : AppCompatActivity() {
         intent.getParcelableExtra<MenuItem>(EXTRA_MENU_ITEM)
     }
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         setupClickListeners()
-        setupObservers()
         initializeData()
     }
 
     private fun setupClickListeners() {
-        binding.ivBack.setOnClickListener {
-            onBackPressed()
-        }
-
-        binding.ivCart.setOnClickListener {
-            // Handle cart click
-        }
+        binding.ivBack.setOnClickListener { onBackPressed() }
 
         binding.ibMinus.setOnClickListener {
             viewModel.decreaseQuantity()
+            updateQuantity()
         }
 
         binding.ibAdd.setOnClickListener {
             viewModel.increaseQuantity()
+            updateQuantity()
         }
 
         binding.btAddToCart.setOnClickListener {
-            menuItem?.let { item ->
-                val cartItem = viewModel.prepareCartItem(item)
-                // Add to cart logic here
-                Timber.d("Adding to cart: ${cartItem.name}")
-            }
-        }
-    }
-
-    private fun setupObservers() {
-        observeMenuItem()
-        observeTotalPrice()
-        observeQuantity()
-    }
-
-    private fun observeMenuItem() {
-        lifecycleScope.launch {
-            viewModel.menuItem.collectLatest { item ->
-                item?.let {
-                    updateUI(it)
-                    setupMandatoryOptions(it.mandatoryOption)
-                    setupAddOnOptions(it.addOnOption)
-                }
-            }
-        }
-    }
-
-    private fun observeTotalPrice() {
-        lifecycleScope.launch {
-            viewModel.totalPrice.collectLatest { totalPrice ->
-                binding.tvMenuPrice.text = "$${String.format("%.2f", totalPrice)}"
-            }
-        }
-    }
-
-    private fun observeQuantity() {
-        lifecycleScope.launch {
-            viewModel.quantity.collectLatest { quantity ->
-                binding.tvCount.text = quantity.toString()
-            }
+            // Handle add to cart
         }
     }
 
     private fun initializeData() {
-        menuItem?.let {
-            viewModel.setMenuItem(it)
+        menuItem?.let { item ->
+            viewModel.setMenuItem(item)
+            updateUI(item)
+            setupMandatoryOptions(item.mandatoryOption)
+            setupAddOnOptions(item.addOnOption)
         }
     }
 
     private fun updateUI(menuItem: MenuItem) {
         binding.tvMenuName.text = menuItem.name
-        binding.tvMenuPrice.text = "$${String.format("%.2f", menuItem.amount)}"
+        binding.tvMenuPrice.text = "$${menuItem.amount}"
         binding.tvDescription.text = menuItem.description
+        // Load image if needed
+    }
 
-        // Load image if you have an ImageView for the hero image
-        // Glide.with(this).load(menuItem.imageUrl).into(binding.ivHeroImage)
+    private fun updateQuantity() {
+        binding.tvCount.text = viewModel.quantity.value.toString()
+        updateTotalPrice()
+    }
+
+    private fun updateTotalPrice() {
+        binding.tvMenuPrice.text = "$${viewModel.getTotalPrice()}"
     }
 
     private fun setupMandatoryOptions(mandatoryOptions: List<MandatoryOption>) {
-        val radioGroupContainer = binding.layoutMandatory.findViewById<RadioGroup>(R.id.rgMandatoryPick)
-        radioGroupContainer.removeAllViews()
+        val radioGroup = binding.layoutMandatory.rgMandatoryPick
+        radioGroup.removeAllViews()
 
-        mandatoryOptions.forEach { option ->
-            // Create section title
-            val titleView = LayoutInflater.from(this).inflate(R.layout.layout_section_title, null)
-            titleView.findViewById<TextView>(R.id.tvSectionTitle).text = option.title
-
-            val pickCountView = titleView.findViewById<TextView>(R.id.tvPickCount)
-            pickCountView.text = "Pick 1"
-
-            radioGroupContainer.addView(titleView)
+        // For now, we assume a single mandatory group (can extend later for multiple)
+        mandatoryOptions.firstOrNull()?.let { option ->
+            binding.layoutMandatory.tvMandatoryPick.text = option.title
 
             // Create radio buttons for each item
             option.itemList.forEach { item ->
-                val radioButtonView = LayoutInflater.from(this).inflate(R.layout.layout_mandatory_item, null)
-                val radioButton = radioButtonView.findViewById<RadioButton>(R.id.rb)
-                val priceTextView = radioButtonView.findViewById<TextView>(R.id.tvPrice)
-
-                radioButton.text = item.title
-                priceTextView.text = if (item.amount > 0) "+ $${String.format("%.2f", item.amount)}" else ""
-                radioButton.tag = Pair(option.id, item.id)
-
-                radioButton.setOnCheckedChangeListener { _, isChecked ->
-                    if (isChecked) {
-                        viewModel.selectMandatoryItem(option.id, item.id)
-                    }
-                }
-
-                radioGroupContainer.addView(radioButtonView)
+                val radioButton = createRadioButton(item, radioGroup)
+                radioGroup.addView(radioButton)
             }
 
-            // Add divider
-            if (mandatoryOptions.last() != option) {
-                val divider = LayoutInflater.from(this).inflate(R.layout.layout_divider, null)
-                radioGroupContainer.addView(divider)
+            // Handle selection at group level
+            radioGroup.setOnCheckedChangeListener { group, checkedId ->
+                val selectedButton = group.findViewById<MaterialRadioButton>(checkedId)
+                val selectedItem = selectedButton?.tag as? MandatoryItem
+                selectedItem?.let {
+                    viewModel.selectMandatoryItem(option.id, it)
+                    updateTotalPrice()
+                }
             }
         }
     }
+
+    /**
+     * Helper to create a radio button with proper styling and tagging.
+     */
+    private fun createRadioButton(item: MandatoryItem, parent: ViewGroup): MaterialRadioButton {
+        return (LayoutInflater.from(parent.context)
+            .inflate(R.layout.layout_mandatory_item, parent, false) as MaterialRadioButton).apply {
+            id = View.generateViewId()
+            text = "${item.title} ${if (item.amount > 0) "+ $${item.amount}" else ""}"
+            tag = item
+        }
+    }
+
+
 
     private fun setupAddOnOptions(addOnOptions: List<AddOnOption>) {
-        val addOnContainer = binding.layoutOptional.findViewById<LinearLayout>(R.id.llAddOnContainer)
-        addOnContainer.removeAllViews()
+        val optionalContainer = binding.llOptional
 
         addOnOptions.forEach { option ->
-            // Create section title
-            val titleView = LayoutInflater.from(this).inflate(R.layout.layout_section_title, null)
-            titleView.findViewById<TextView>(R.id.tvSectionTitle).text = option.title
+            optionalContainer.addView(createAddOnSection(option))
+        }
+    }
 
-            val pickCountView = titleView.findViewById<TextView>(R.id.tvPickCount)
-            pickCountView.text = "Optional"
+    private fun createAddOnSection(option: AddOnOption): View {
+        return LayoutInflater.from(this).inflate(R.layout.layout_optional, null).apply {
+            findViewById<TextView>(R.id.tvOptionalPick).text = option.title
 
-            addOnContainer.addView(titleView)
+            val checkboxesContainer = findViewById<LinearLayout>(R.id.layoutOptionalSample)
 
-            // Create checkboxes for each item
             option.itemList.forEach { item ->
-                val checkboxView = LayoutInflater.from(this).inflate(R.layout.layout_optional_item, null)
-                val checkbox = checkboxView.findViewById<CheckBox>(R.id.cb)
-                val textView = checkboxView.findViewById<TextView>(R.id.tvCheckBox)
-                val priceView = checkboxView.findViewById<TextView>(R.id.tvPrice)
-
-                textView.text = item.title
-                priceView.text = "+ $${String.format("%.2f", item.amount)}"
-
-                checkbox.setOnCheckedChangeListener { _, isChecked ->
-                    viewModel.toggleAddOnItem(item.id, isChecked)
-                }
-
-                addOnContainer.addView(checkboxView)
-            }
-
-            // Add divider
-            if (addOnOptions.last() != option) {
-                val divider = LayoutInflater.from(this).inflate(R.layout.layout_divider, null)
-                addOnContainer.addView(divider)
+                checkboxesContainer.addView(createCheckboxItem(item))
             }
         }
     }
+
+    private fun createCheckboxItem(item: AddonItem): View {
+        return LayoutInflater.from(this).inflate(R.layout.layout_optional_item, null).apply {
+            findViewById<TextView>(R.id.tvCheckBox).text = item.title
+            findViewById<TextView>(R.id.tvPrice).text = "+ $${item.amount}"
+
+            val checkbox = findViewById<MaterialCheckBox>(R.id.cb)
+
+            // Make entire row clickable
+            setOnClickListener {
+                checkbox.isChecked = !checkbox.isChecked
+            }
+
+            checkbox.setOnCheckedChangeListener { _, isChecked ->
+                viewModel.toggleAddOnItem(item, isChecked)
+                updateTotalPrice()
+            }
+        }
+    }
+
+
 }

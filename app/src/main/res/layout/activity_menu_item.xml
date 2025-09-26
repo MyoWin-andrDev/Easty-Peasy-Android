@@ -141,14 +141,23 @@
                 app:layout_constraintTop_toBottomOf="@id/divider"
                 layout="@layout/layout_mandatory"/>
 
-            <include
-                android:id="@+id/layoutOptional"
+            <LinearLayout
+                android:id="@+id/llOptional"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/layoutMandatory"
-                layout="@layout/layout_optional"/>
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/layoutOptional"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/layout_optional"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tvNoteToRestaurant"
@@ -157,7 +166,7 @@
                 style="@style/TextAppearance.Heading.Normal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layoutOptional"
+                app:layout_constraintTop_toBottomOf="@id/llOptional"
                 android:text="Note To Restaurant"
                 android:paddingVertical="@dimen/dp_8"/>
 

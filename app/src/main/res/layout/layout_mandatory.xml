@@ -38,7 +38,9 @@
         <!-- RadioButtons will be added dynamically -->
 
         <include
-            layout="@layout/layout_mandatory_item"/>
+            android:id="@+id/layoutMandatorySample"
+            layout="@layout/layout_mandatory_item"
+            android:visibility="gone"/>
 
     </RadioGroup>
 

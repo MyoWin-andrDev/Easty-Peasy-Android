@@ -74,5 +74,5 @@ data class AddonItem(
     val id : Int = 0,
     val title : String = "",
     val amount : Float = 0.0f,
-    val isSelected : Boolean = false
+    var isSelected : Boolean = false
 ) : Parcelable
