@@ -17,6 +17,7 @@
         android:paddingVertical="@dimen/dp_8"/>
 
     <TextView
+        android:id="@+id/tvPick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/TextAppearance.Paragraph.Tiny"
@@ -26,6 +27,7 @@
         android:text="Optional"
         android:textColor="@color/colorSecondary"
         android:background="@drawable/bg_pick"/>
+
 
     <!-- This will be replaced with dynamic content -->
     <LinearLayout

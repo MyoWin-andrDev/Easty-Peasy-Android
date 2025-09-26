@@ -185,17 +185,23 @@
                 android:id="@+id/ilNoteToRestaurant"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvNoteToRestaurant">
+                app:layout_constraintTop_toBottomOf="@id/tvNoteToRestaurant"
+                app:boxStrokeColor="@color/box_stroke_color"
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="2dp"
+                app:hintTextColor="@color/hint"
+                app:boxBackgroundColor="@color/onPrimary">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etNoteToRestaurant"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Add Your Request"
-                    android:textColorHint="@color/textPlaceHolder"
-                    android:background="@drawable/bg_edit_text"/>
+                    android:minHeight="100dp"
+                    android:maxLines="3"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -257,7 +263,8 @@
                 android:layout_marginHorizontal="@dimen/dp_24"
                 android:layout_marginTop="@dimen/dp_24"
                 android:layout_marginBottom="@dimen/dp_48"
-                android:fontFamily="@font/lato_bold"/>
+                android:fontFamily="@font/lato_bold"
+                android:enabled="false"/>
 
 
 

@@ -76,3 +76,12 @@ data class AddonItem(
     val amount : Float = 0.0f,
     var isSelected : Boolean = false
 ) : Parcelable
+
+@Parcelize
+data class OrderItem(
+    val id : Int = 0,
+    val quantity : Int = 0,
+    val subTotal : Float = 0.0f,
+    val addOnItem : List<AddonItem> = emptyList(),
+    val note : String = ""
+) : Parcelable

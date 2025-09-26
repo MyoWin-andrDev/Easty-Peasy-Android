@@ -10,11 +10,10 @@ import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.lifecycleScope
 import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.radiobutton.MaterialRadioButton
+import com.google.android.material.snackbar.Snackbar
 import com.myowin.eastypeasy.R
 import com.myowin.eastypeasy.databinding.ActivityMenuItemBinding
 import com.myowin.eastypeasy.model.dto.AddOnOption
@@ -64,6 +63,7 @@ class MenuItemActivity : AppCompatActivity() {
 
         binding.btAddToCart.setOnClickListener {
             // Handle add to cart
+            showAddToCartSuccess()
         }
     }
 
@@ -89,7 +89,20 @@ class MenuItemActivity : AppCompatActivity() {
     }
 
     private fun updateTotalPrice() {
-        binding.tvMenuPrice.text = "$${viewModel.getTotalPrice()}"
+        binding.btAddToCart.text = "Add To Cart  -  $${String.format("%.2f", viewModel.getTotalPrice())}"
+    }
+
+    private fun showAddToCartSuccess() {
+        val menuItemName = viewModel.menuItem.value?.name ?: "Item"
+        val message = "$menuItemName added to cart"
+
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+            .setAction("View Cart") {
+                // Navigate to cart or show cart dialog
+                //showCart()
+            }
+            .setActionTextColor(ContextCompat.getColor(this, R.color.colorSuccess))
+            .show()
     }
 
     private fun setupMandatoryOptions(mandatoryOptions: List<MandatoryOption>) {
@@ -114,6 +127,9 @@ class MenuItemActivity : AppCompatActivity() {
                     viewModel.selectMandatoryItem(option.id, it)
                     updateTotalPrice()
                 }
+                binding.layoutMandatory.tvPick.visibility = View.INVISIBLE
+                binding.layoutMandatory.tvCompleted.visibility = View.VISIBLE
+                binding.btAddToCart.isEnabled = true
             }
         }
     }
